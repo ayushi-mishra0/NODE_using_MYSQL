@@ -31,6 +31,18 @@ app.post('/post',(req,res)=>{
     })
 })
 
+app.get("/getmax",(req,res)=>{
+    con.query('select max(mark) as maxmark from mytable',
+        (err,result)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+                res.send(result)
+            }
+        })
+})
+
 app.listen(3000,(err)=>{
     if (err) {
         console.log(err);
