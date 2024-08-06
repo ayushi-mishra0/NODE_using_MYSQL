@@ -22,9 +22,11 @@ app.get("/fetchbyid/:id", (req, res) => {
     con.query('SELECT * FROM mytable WHERE id = ?', [fetchid], (err, result) => {
         if (err) {
             console.log(err);
-            res.status(500).send('Database query error');
         } else {
-            res.send(result);
+            var data=JSON.parse(JSON.stringify(result))
+            console.log(data[0].name);
+            console.log(data[0].mark);
+
         }
     });
 });
